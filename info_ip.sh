@@ -4,7 +4,7 @@
 # Nom		: 		#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Version	: 0.0.3		#
+# Version	: 0.0.4		#
 #################################
 
 #variables
@@ -17,11 +17,9 @@ IP=$(hostname -I | awk '{print $1}')
 IP_PUB=$(curl ifconfig.me)
 NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
-#CP =$(lscpu | grep  @ | awk '{print $4,$NF}' Essai avec awk)
 CPU=$(cat /proc/cpuinfo | grep -i "^model name" | awk -F ": " '{print $2}' | head -1 | sed 's/ \+/ /g')
 MEM=$(free -h | grep Mem | awk '{print $2}')
 KERNEL=$(uname -a | awk '{print $3}')
-#DISQUE=$(df -h | grep sd)
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
 
 if [ -f /etc/os-release ]; then
@@ -41,8 +39,8 @@ echo -e ${WHITE}"Distribution 	  : "$OS
 echo "Version		  : "$VER
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
-echo "En Fonction 	  : "$TEMPS
-echo "Environement	  : "$DESKTOP_SESSION
+echo -e "En Fonction 	  : "${RED}$TEMPS
+echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
 echo "Processeur : "$CPU
 echo "Mémoire Ram : "$MEM
