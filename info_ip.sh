@@ -1,10 +1,11 @@
 #!/bin/bash
 
 #################################
-# Nom		: 		#
+# Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Version	: 0.0.4		#
+# Revision	: 04/08/20	#
+# Version	: 0.0.5		#
 #################################
 
 #variables
@@ -50,9 +51,11 @@ echo "================== Température =================="
 if [ $ID == "fedora" ]; then
 	echo "Temperature disques :" ; hddtemp
 elif [ $ID == "debian" ]; then
-	echo "Temperature disques :" ; hddtemps /dev/sd*
+	echo "Temperature disques :" ; hddtemp /dev/sd*
+elif [ $ID == "ubuntu" ]; then
+	echo "Temperature disques :" ; sudo hddtemp /dev/sd*
 else
-	echo "Temperature disques :" ; hddtemps /dev/sd*
+	echo "Temperature disques :" ; hddtemp /dev/sd*
 fi
 
 #Temperature
