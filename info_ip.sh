@@ -54,11 +54,14 @@ elif [ $ID == "debian" ]; then
 	echo "Temperature disques :" ; hddtemp /dev/sd*
 elif [ $ID == "ubuntu" ]; then
 	echo "Temperature disques :" ; sudo hddtemp /dev/sd*
+elif [ $ID == "raspbian" ]; then
+	echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
 else
 	echo "Temperature disques :" ; hddtemp /dev/sd*
 fi
 
 #Temperature
+echo
 if [[ -x "/usr/bin/sensors" ]]; then
     sensors
 fi
