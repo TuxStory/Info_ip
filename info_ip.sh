@@ -9,12 +9,12 @@
 #################################
 
 
-EACCES=13 # Permission denied
-
-if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
-  echo "Permission denied : you must be root."
-  exit $EACCES
-  fi
+#EACCES=13 # Permission denied
+#
+#if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
+#  echo "Permission denied : you must be root."
+#  exit $EACCES
+#  fi
 
 ############## variables
 GREEN='\033[0;32m'
@@ -38,6 +38,11 @@ if [ -f /etc/os-release ]; then
     ID=$ID
 fi
 
+if [$ID == "ubuntu" ]; then
+    echo "Lancez le programme en tant que root ou sudo ./info_ip"
+    exit 13
+fi
+
 ############# Programme
 clear
 echo -e ${WHITE}"==================== IP ===================="
@@ -58,7 +63,7 @@ echo "Disques : " ; df -h | grep sd
 echo "================== Température =================="
 
 ########### Temperature Disque
-if [ $ID == "fedora" ]; then
+if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
 	echo "Temperature disques :" ; hddtemp
 elif [ $ID == "debian" ]; then
 	echo "Temperature disques :" ; hddtemp /dev/sd*
@@ -70,6 +75,7 @@ fi
 
 ############## Temperature Sensors
 echo
-if [[ -x "/usr/bin/sensors" ]]; then
+if [[ -x "/usr/bin/sensors" ]]
+then
     sensors
 fi
