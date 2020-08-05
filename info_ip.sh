@@ -8,7 +8,15 @@
 # Version	: 0.0.5		#
 #################################
 
-#variables
+
+EACCES=13 # Permission denied
+
+if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
+  echo "Permission denied : you must be root."
+  exit $EACCES
+  fi
+
+############## variables
 GREEN='\033[0;32m'
 WHITE='\033[1;37m'
 RED='\033[0;31m'
@@ -30,9 +38,9 @@ if [ -f /etc/os-release ]; then
     ID=$ID
 fi
 
-#Programme
+############# Programme
 clear
-echo "==================== IP ===================="
+echo -e ${WHITE}"==================== IP ===================="
 echo -e ${WHITE}"IP locale         : "${GREEN}$IP
 echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
@@ -48,19 +56,19 @@ echo "Mémoire Ram : "$MEM
 echo "Carte Graphique : "$GPU
 echo "Disques : " ; df -h | grep sd
 echo "================== Température =================="
+
+########### Temperature Disque
 if [ $ID == "fedora" ]; then
 	echo "Temperature disques :" ; hddtemp
 elif [ $ID == "debian" ]; then
 	echo "Temperature disques :" ; hddtemp /dev/sd*
-elif [ $ID == "ubuntu" ]; then
-	echo "Temperature disques :" ; sudo hddtemp /dev/sd*
 elif [ $ID == "raspbian" ]; then
 	echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
 else
-	echo "Temperature disques :" ; hddtemp /dev/sd*
+	echo "Temperature disques :" ; sudo hddtemp /dev/sd*
 fi
 
-#Temperature
+############## Temperature Sensors
 echo
 if [[ -x "/usr/bin/sensors" ]]; then
     sensors
