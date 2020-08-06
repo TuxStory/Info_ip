@@ -8,7 +8,6 @@
 # Version	: 0.0.5		#
 #################################
 
-
 EACCES=13 # Permission denied
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
@@ -60,12 +59,12 @@ echo "================== Température =================="
 ############## Temperature Disque
 if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
 	echo "Temperature disques :" ; hddtemp
-elif [ $ID == "debian" ]; then
-	echo "Temperature disques :" ; hddtemp /dev/sd*
+#elif [ $ID == "debian" ] || [ $ID == "ubuntu"]; then
+#	echo "Temperature disques :" ; hddtemp /dev/sd*
 elif [ $ID == "raspbian" ]; then
 	echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
 else
-	echo "Temperature disques :" ; sudo hddtemp /dev/sd*
+	echo "Temperature disques :" ; hddtemp /dev/sd*
 fi
 
 ############### Temperature Sensors
