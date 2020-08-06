@@ -38,7 +38,7 @@ if [ -f /etc/os-release ]; then
     ID=$ID
 fi
 
-if [$ID == "ubuntu" ]; then
+if [$ID == "Ubuntu" ]; then
     echo "Lancez le programme en tant que root ou sudo ./info_ip"
     exit 13
 fi
