@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 04/08/20	#
-# Version	: 0.0.5		#
+# Revision	: 07/08/20	#
+# Version	: 0.0.6		#
 #################################
 
 EACCES=13 # Permission denied
@@ -59,8 +59,6 @@ echo "================== Température =================="
 ############## Temperature Disque
 if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
 	echo "Temperature disques :" ; hddtemp
-#elif [ $ID == "debian" ] || [ $ID == "ubuntu"]; then
-#	echo "Temperature disques :" ; hddtemp /dev/sd*
 elif [ $ID == "raspbian" ]; then
 	echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
 else
