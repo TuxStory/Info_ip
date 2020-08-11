@@ -5,7 +5,7 @@
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
 # Revision	: 07/08/20	#
-# Version	: 0.0.6		#
+# Version	: 0.0.7		#
 #################################
 
 EACCES=13 # Permission denied
@@ -50,9 +50,9 @@ echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
-echo "Processeur	: "$CPU
-echo "Mémoire Ram	: "$MEM
-echo "Carte Graphique	: "$GPU
+echo "Processeur	  : "$CPU
+echo "Mémoire Ram	  : "$MEM
+echo "Carte Graphique	  : "$GPU
 echo "Disques : " ; df -h | grep sd
 echo "================== Température =================="
 
