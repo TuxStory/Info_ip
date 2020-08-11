@@ -50,9 +50,9 @@ echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
-echo "Processeur : "$CPU
-echo "Mémoire Ram : "$MEM
-echo "Carte Graphique : "$GPU
+echo "Processeur	: "$CPU
+echo "Mémoire Ram	: "$MEM
+echo "Carte Graphique	: "$GPU
 echo "Disques : " ; df -h | grep sd
 echo "================== Température =================="
 
