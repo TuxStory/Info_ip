@@ -22,7 +22,7 @@ RED='\033[0;31m'
 BLUE='\033[0;34m'
 
 IP=$(hostname -I | awk '{print $1}')
-IP_PUB=$(curl ifconfig.me)
+IP_PUB=$(curl ifconfig.me > /dev/null 2>&1)
 NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
 CPU=$(cat /proc/cpuinfo | grep -i "^model name" | awk -F ": " '{print $2}' | head -1 | sed 's/ \+/ /g')
