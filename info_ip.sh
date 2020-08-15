@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 07/08/20	#
-# Version	: 0.0.7		#
+# Revision	: 16/08/20	#
+# Version	: 0.0.8		#
 #################################
 
 EACCES=13 # Permission denied
