@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 16/08/20	#
-# Version	: 0.0.8		#
+# Revision	: 17/08/20	#
+# Version	: 0.0.9		#
 #################################
 
 EACCES=13 # Permission denied
@@ -29,6 +29,7 @@ CPU=$(cat /proc/cpuinfo | grep -i "^model name" | awk -F ": " '{print $2}' | hea
 MEM=$(free -h | grep Mem | awk '{print $2}')
 KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
+RESOLUTION=$(xrandr | grep "*" | awk '{print $1}')
 
 if [ -f /etc/os-release ]; then
     . /etc/os-release
@@ -53,7 +54,9 @@ echo "=================== Matériel =================="
 echo "Processeur	  : "$CPU
 echo "Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
-echo "Disques : " ; df -h | grep sd
+echo "Resolution	  : "$RESOLUTION
+echo
+echo "Disques 		  : " ; df -h | grep sd
 echo "================== Température =================="
 
 ############## Temperature Disque
