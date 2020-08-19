@@ -56,7 +56,7 @@ echo "Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
 echo
-echo "Disques 		  : " ; df -h | grep sd
+echo "Disques		  : " ; df -h | grep sd
 echo "================== Température =================="
 
 ############## Temperature Disque
