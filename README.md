@@ -1,6 +1,6 @@
 ## Info_ip
 
-Auteur : Antoine Even
+Auteur : Antoine Even  
 Nom : Info_ip
 
 Il s'agit d'un script Bash qui permet d'avoir plusieurs types d'informations sur le système
