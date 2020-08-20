@@ -5,7 +5,7 @@
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
 # Revision	: 17/08/20	#
-# Version	: 0.0.9		#
+# Version	: 0.1.0		#
 #################################
 
 EACCES=13 # Permission denied
@@ -55,8 +55,7 @@ echo "Processeur	  : "$CPU
 echo "Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
-echo
-echo "Disques		  : " ; df -h | grep sd
+echo "Partitions	  : " ; df -h | grep sd
 echo "================== Température =================="
 
 ############## Temperature Disque
@@ -69,7 +68,7 @@ else
 fi
 
 ############### Temperature Sensors
-echo
+echo "Temperature des capteurs :"
 if [[ -x "/usr/bin/sensors" ]]
 then
     sensors
