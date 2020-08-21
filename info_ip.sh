@@ -26,6 +26,7 @@ IP_PUB=$(curl ifconfig.me 2> /dev/null)
 NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
 CPU=$(cat /proc/cpuinfo | grep -i "^model name" | awk -F ": " '{print $2}' | head -1 | sed 's/ \+/ /g')
+NBCPU=$(nproc)
 MEM=$(free -h | grep Mem | awk '{print $2}')
 KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
@@ -51,8 +52,8 @@ echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
-echo "Processeur	  : "$CPU
-echo "Mémoire Ram	  : "$MEM
+echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
+echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
 echo "Partitions	  : " ; df -h | grep sd
