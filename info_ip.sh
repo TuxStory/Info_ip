@@ -52,7 +52,7 @@ echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
-echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
+echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU #ToDO Ajouter uname -m X64 ou 32)
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
