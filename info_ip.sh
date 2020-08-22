@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 20/08/20	#
-# Version	: 0.1.0		#
+# Revision	: 22/08/20	#
+# Version	: 0.1.1		#
 #################################
 
 EACCES=13 # Permission denied
@@ -18,8 +18,8 @@ fi
 ############## variables
 GREEN='\033[0;32m'
 WHITE='\033[1;37m'
-RED='\033[0;31m'
-BLUE='\033[0;34m'
+RED='\033[0;91m'
+BLUE='\033[0;94m'
 
 IP=$(hostname -I | awk '{print $1}')
 IP_PUB=$(curl ifconfig.me 2> /dev/null)
@@ -27,6 +27,7 @@ NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
 CPU=$(cat /proc/cpuinfo | grep -i "^model name" | awk -F ": " '{print $2}' | head -1 | sed 's/ \+/ /g')
 NBCPU=$(nproc)
+XBITS=$(uname -m)
 MEM=$(free -h | grep Mem | awk '{print $2}')
 KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
@@ -52,7 +53,8 @@ echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
-echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU #ToDO Ajouter uname -m X64 ou 32)
+echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
+echo -e ${WHITE}"Architecture	  : "${GREEN}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
@@ -61,15 +63,15 @@ echo "================== Température =================="
 
 ############## Temperature Disque
 if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
-	echo "Temperature disques :" ; hddtemp
+	echo -e "["${GREEN}"1"${WHITE}"] Temperature disques :" ; hddtemp
 elif [ $ID == "raspbian" ]; then
 	echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
 else
-	echo "Temperature disques :" ; hddtemp /dev/sd*
+	echo -e "["${GREEN}"1"${WHITE}"] Temperature disques :" ; hddtemp /dev/sd*
 fi
-
+echo
 ############### Temperature Sensors
-echo "Temperature des capteurs :"
+echo -e "["${GREEN}"2"${WHITE}"] Temperature des capteurs :"
 if [[ -x "/usr/bin/sensors" ]]
 then
     sensors
