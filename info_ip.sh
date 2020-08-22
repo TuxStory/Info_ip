@@ -20,6 +20,7 @@ GREEN='\033[0;32m'
 WHITE='\033[1;37m'
 RED='\033[0;91m'
 BLUE='\033[0;94m'
+MAGENTA='\033[0;95m'
 
 IP=$(hostname -I | awk '{print $1}')
 IP_PUB=$(curl ifconfig.me 2> /dev/null)
@@ -58,20 +59,19 @@ echo -e ${WHITE}"Architecture	  : "${GREEN}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
-echo "Partitions	  : " ; df -h | grep sd
+echo "================== Partitions ===================" ; df -h | grep sd
 echo "================== Température =================="
 
 ############## Temperature Disque
 if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
-	echo -e "["${GREEN}"1"${WHITE}"] Temperature disques :" ; hddtemp
+	hddtemp
 elif [ $ID == "raspbian" ]; then
 	echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
 else
-	echo -e "["${GREEN}"1"${WHITE}"] Temperature disques :" ; hddtemp /dev/sd*
+	hddtemp /dev/sd*
 fi
 echo
 ############### Temperature Sensors
-echo -e "["${GREEN}"2"${WHITE}"] Temperature des capteurs :"
 if [[ -x "/usr/bin/sensors" ]]
 then
     sensors
