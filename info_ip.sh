@@ -55,7 +55,7 @@ echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
 echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
-echo -e ${WHITE}"Architecture	  : "${GREEN}$XBITS
+echo -e ${WHITE}"Architecture	  : "${MAGENTA}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
