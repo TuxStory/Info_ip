@@ -4,7 +4,7 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 22/08/20	#
+# Revision	: 26/08/20	#
 # Version	: 0.1.1		#
 #################################
 
@@ -28,12 +28,15 @@ NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
 CPU=$(cat /proc/cpuinfo | grep -i "^model name" | awk -F ": " '{print $2}' | head -1 | sed 's/ \+/ /g')
 NBCPU=$(nproc)
+FABCPU=$(dmidecode -s processor-manufacturer)
 XBITS=$(uname -m)
 MEM=$(free -h | grep Mem | awk '{print $2}')
 KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
 RESOLUTION=$(xrandr | grep "*" | awk '{print $1}')
-
+CHASSIS=$(dmidecode -s chassis-type)
+CHAMAN=$(dmidecode -s chassis-manufacturer)
+SYSMAN=$(dmidecode -s system-manufacturer)
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     OS=$NAME
@@ -54,6 +57,7 @@ echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
+echo -e "Fabricant	  : "$CHAMAN $SYSMAN $CHASSIS
 echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
 echo -e ${WHITE}"Architecture	  : "${MAGENTA}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
