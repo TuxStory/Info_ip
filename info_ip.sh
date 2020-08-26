@@ -5,7 +5,7 @@
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
 # Revision	: 26/08/20	#
-# Version	: 0.1.1		#
+# Version	: 0.1.2		#
 #################################
 
 EACCES=13 # Permission denied
@@ -63,7 +63,7 @@ echo -e ${WHITE}"Architecture	  : "${MAGENTA}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
-echo "================== Partitions ===================" ; df -h | grep sd
+echo "================== Partitions ===================" ; df -h | grep sd #TODO RPI ne pas afficher
 echo "================== Température =================="
 
 ############## Temperature Disque
@@ -80,3 +80,5 @@ if [[ -x "/usr/bin/sensors" ]]
 then
     sensors
 fi
+
+#TODO2 Verifier si les programmes sont installer dmideconde hddtemp ...
