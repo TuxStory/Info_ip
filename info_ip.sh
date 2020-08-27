@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 26/08/20	#
-# Version	: 0.1.2		#
+# Revision	: 27/08/20	#
+# Version	: 0.1.3		#
 #################################
 
 EACCES=13 # Permission denied
@@ -57,7 +57,8 @@ echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo "=================== Matériel =================="
-echo -e "Fabricant	  : "$CHAMAN $SYSMAN $CHASSIS
+echo -e "Fabricant	  : "$CHAMAN " / " $SYSMAN
+echo -e "Type de Chassis   : "$CHASSIS
 echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
 echo -e ${WHITE}"Architecture	  : "${MAGENTA}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
