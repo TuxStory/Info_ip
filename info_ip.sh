@@ -17,10 +17,10 @@ fi
 
 ############## Fonctions
 function usage(){
-	printf "Utilisation du script :\n"
-	printf "\t-t		: affiche les temperatures.\n"
-	printf "\t-h		: affiche ce message.\n"
-	printf "\t--help		: affiche ce message.\n"
+	echo "Utilisation du script :"
+	echo "-t		: affiche les temperatures."
+	echo "-h		: affiche ce message."
+	echo "--help		: affiche ce message."
 }
 
 ############## Arguments
