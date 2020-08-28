@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 27/08/20	#
-# Version	: 0.1.3		#
+# Revision	: 28/08/20	#
+# Version	: 0.1.4		#
 #################################
 
 EACCES=13 # Permission denied
@@ -15,7 +15,25 @@ if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   exit $EACCES
 fi
 
-############## variables
+############## Fonctions
+function usage(){
+	printf "Utilisation du script :\n"
+	printf "\t-t		: affiche les temperatures.\n"
+	printf "\t-h		: affiche ce message.\n"
+	printf "\t--help		: affiche ce message.\n"
+}
+
+############## Arguments
+if [ $# -eq 1 ] && [ "$1" == "-h" ] || [ "$1" == "--help" ]
+then
+    usage
+    exit 1
+elif [ $# -eq 1 ] && [ $1 == "-t" ]
+then
+    TEMP=1
+fi
+
+############## Variables
 GREEN='\033[0;32m'
 WHITE='\033[1;37m'
 RED='\033[0;91m'
@@ -65,21 +83,23 @@ echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
 echo "================== Partitions ===================" ; df -h | grep sd #TODO RPI ne pas afficher
-echo "================== Température =================="
 
 ############## Temperature Disque
-if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
-	hddtemp
-elif [ $ID == "raspbian" ]; then
-	echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
-else
-	hddtemp /dev/sd*
-fi
-echo
-############### Temperature Sensors
-if [[ -x "/usr/bin/sensors" ]]
+if [ "$TEMP" == 1 ]
 then
-    sensors
+    echo "================== Température =================="
+    if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
+        hddtemp
+    elif [ $ID == "raspbian" ]; then
+        echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
+    else
+        hddtemp /dev/sd*
+    fi
+    echo
+    ############### Temperature Sensors
+    if [[ -x "/usr/bin/sensors" ]]
+    then
+        sensors
+    fi
 fi
-
-#TODO2 Verifier si les programmes sont installer dmideconde hddtemp ...
+#TODO2 Verifier si les programmes sont installer dmideconde hddtemp sensors ...
