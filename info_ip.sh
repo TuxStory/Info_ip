@@ -83,6 +83,9 @@ echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
 echo "================== Partitions ===================" ; df -h | grep sd #TODO RPI ne pas afficher
+#choisir solution
+#sblk -o PATH,SIZE,RO,TYPE,MOUNTPOINT,UUID,MODEL
+#df -h "$@" | grep -E '^/';
 
 ############## Temperature Disque
 if [ "$TEMP" == 1 ]
