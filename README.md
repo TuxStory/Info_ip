@@ -14,7 +14,7 @@ Utilisateur :
 En root : 
 `./info_ip.sh`
 
-option du script :
--t		: affiche les temperatures.
--h		: affiche ce message.
---help		: affiche ce message.
+option du script :  
+-t		: affiche les temperatures.  
+-h		: affiche ce message.  
+--help		: affiche ce message.  
