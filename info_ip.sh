@@ -4,7 +4,7 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 29/08/20	#
+# Revision	: 30/08/20	#
 # Version	: 0.1.5		#
 #################################
 
@@ -91,7 +91,7 @@ echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Resolution	  : "$RESOLUTION
 echo "================== Partitions ===================" ;
-df -h "$@" | grep -E '^/';
+df -h | grep -E '^/';
 
 ############## Temperature Disque
 if [ "$TEMP" == 1 ]
