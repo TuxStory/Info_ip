@@ -62,6 +62,14 @@ if [ -f /etc/os-release ]; then
     ID=$ID
 fi
 
+############### Raspberry Pi
+if [ $ID == "raspbian" ]; then
+    echo "TEST2"
+    CHAMAN=$(cat /proc/device-tree/model  | awk '{print $1 " " $2}')
+    SYSMAN=$(cat /proc/device-tree/model  | awk '{print $3 " " $4}')
+    CHASSIS="Single Board Computer"
+fi
+
 ############### Programme
 clear
 echo -e ${WHITE}"==================== IP ===================="
