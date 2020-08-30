@@ -4,7 +4,7 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 30/08/20	#
+# Revision	: 31/08/20	#
 # Version	: 0.1.5		#
 #################################
 
@@ -81,7 +81,8 @@ echo "Version		  : "$VER
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
-echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
+echo -e ${WHITE}"Environement	  : "$XDG_DESKTOP_SESSION
+echo -e "Langue		  : "$LANG
 echo "=================== Matériel =================="
 echo -e "Fabricant	  : "$CHAMAN " / " $SYSMAN
 echo -e "Type de Chassis   : "$CHASSIS
@@ -111,4 +112,4 @@ then
         sensors
     fi
 fi
-#TODO2 Verifier si les programmes sont installer dmideconde hddtemp sensors ...
+
