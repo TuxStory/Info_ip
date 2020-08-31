@@ -55,6 +55,7 @@ RESOLUTION=$(xrandr | grep "*" | awk '{print $1}')
 CHASSIS=$(dmidecode -s chassis-type)
 CHAMAN=$(dmidecode -s chassis-manufacturer)
 SYSMAN=$(dmidecode -s system-manufacturer)
+FUSEAUH=$(timedatectl show | grep  Timezone | cut -d "=" -f2)
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     OS=$NAME
@@ -81,8 +82,9 @@ echo "Version		  : "$VER
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
-echo -e ${WHITE}"Environement	  : "$XDG_DESKTOP_SESSION
+echo -e ${WHITE}"Environement	  : "$XDG_CURRENT_SESSION
 echo -e "Langue		  : "$LANG
+echo -e "Fuseau Horaire    : "$FUSEAUH
 echo "=================== Matériel =================="
 echo -e "Fabricant	  : "$CHAMAN " / " $SYSMAN
 echo -e "Type de Chassis   : "$CHASSIS
@@ -112,4 +114,3 @@ then
         sensors
     fi
 fi
-
