@@ -82,7 +82,7 @@ echo "Version		  : "$VER
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
-echo -e ${WHITE}"Environement	  : "$XDG_CURRENT_SESSION
+echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
 echo -e "Langue		  : "$LANG
 echo -e "Fuseau Horaire    : "$FUSEAUH
 echo "=================== Matériel =================="
