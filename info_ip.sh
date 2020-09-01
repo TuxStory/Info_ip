@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 31/08/20	#
-# Version	: 0.1.5		#
+# Revision	: 01/09/20	#
+# Version	: 0.1.6		#
 #################################
 
 EACCES=13 # Permission denied
@@ -56,11 +56,14 @@ CHASSIS=$(dmidecode -s chassis-type)
 CHAMAN=$(dmidecode -s chassis-manufacturer)
 SYSMAN=$(dmidecode -s system-manufacturer)
 FUSEAUH=$(timedatectl show | grep  Timezone | cut -d "=" -f2)
+HEURE=$(date +"%H:%M %d/%m/%Y")
+
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     OS=$NAME
     VER=$VERSION_ID
     ID=$ID
+    VARIANT=$VARIANT
 fi
 
 ############### Raspberry Pi
@@ -78,13 +81,14 @@ echo -e ${WHITE}"IP locale         : "${GREEN}$IP
 echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
-echo "Version		  : "$VER
+echo -e "Version		  : "$VER
+echo -e "Variante          : "$VARIANT
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
-echo -e ${WHITE}"Environement	  : "$DESKTOP_SESSION
-echo -e "Langue		  : "$LANG
+echo -e ${WHITE}"Langue		  : "$LANG
 echo -e "Fuseau Horaire    : "$FUSEAUH
+echo -e "Temps		  : "$HEURE
 echo "=================== Matériel =================="
 echo -e "Fabricant	  : "$CHAMAN " / " $SYSMAN
 echo -e "Type de Chassis   : "$CHASSIS
