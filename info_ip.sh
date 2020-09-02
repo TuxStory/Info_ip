@@ -82,7 +82,9 @@ echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
 echo -e "Version		  : "$VER
-echo -e "Variante          : "$VARIANT
+if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
+    echo -e "Variante          : "$VARIANT
+fi
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
