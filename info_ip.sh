@@ -4,7 +4,7 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 01/09/20	#
+# Revision	: 03/09/20	#
 # Version	: 0.1.6		#
 #################################
 
@@ -58,6 +58,7 @@ SYSMAN=$(dmidecode -s system-manufacturer)
 FUSEAUH=$(timedatectl show | grep  Timezone | cut -d "=" -f2)
 HEURE=$(date +"%H:%M %d/%m/%Y")
 
+############### OS Release
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     OS=$NAME
@@ -72,6 +73,11 @@ if [ $ID == "raspbian" ]; then
     CHAMAN=$(cat /proc/device-tree/model  | awk '{print $1 " " $2}')
     SYSMAN=$(cat /proc/device-tree/model  | awk '{print $3 " " $4}')
     CHASSIS="Single Board Computer"
+fi
+
+############### OpenSuse
+if [ $ID == "opensuse-leap"];then
+    TEMPS=$(uptime | awk '{print $3}')
 fi
 
 ############### Programme
