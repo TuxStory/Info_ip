@@ -4,11 +4,12 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 03/09/20	#
-# Version	: 0.1.6		#
+# Revision	: 04/09/20	#
+# Version	: 0.1.7		#
 #################################
 
 EACCES=13 # Permission denied
+VERSION=0.1.7
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -21,6 +22,13 @@ function usage(){
 	echo "-t		: affiche les temperatures."
 	echo "-h		: affiche ce message."
 	echo "--help		: affiche ce message."
+	echo "--version	: afficher la version"
+}
+
+function version(){
+	echo "Info Ip"
+	echo "Version : "$VERSION
+	exit $EACCES
 }
 
 ############## Arguments
@@ -31,6 +39,9 @@ then
 elif [ $# -eq 1 ] && [ $1 == "-t" ]
 then
     TEMP=1
+elif [ $# -eq 1 ] && [ $1 == "--version" ] || [ "$1" == "-v" ]
+then
+    version
 fi
 
 ############## Variables
