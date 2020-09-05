@@ -4,12 +4,12 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 04/09/20	#
-# Version	: 0.1.7		#
+# Revision	: 05/09/20	#
+# Version	: 0.1.8		#
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.1.7
+VERSION=0.1.8
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -21,8 +21,9 @@ function usage(){
 	echo "Utilisation du script :"
 	echo "-t		: affiche les temperatures."
 	echo "-h		: affiche ce message."
+	echo "-v		: affiche la version."
 	echo "--help		: affiche ce message."
-	echo "--version	: afficher la version"
+	echo "--version	: afficher la version."
 }
 
 function version(){
@@ -62,6 +63,7 @@ XBITS=$(uname -m)
 MEM=$(free -h | grep Mem | awk '{print $2}')
 KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
+GPUMEMORY=$(glxinfo | grep "Video memory" | awk '{print $3}')
 RESOLUTION=$(xrandr | grep "*" | awk '{print $1}')
 CHASSIS=$(dmidecode -s chassis-type)
 CHAMAN=$(dmidecode -s chassis-manufacturer)
@@ -115,6 +117,7 @@ echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
 echo -e ${WHITE}"Architecture	  : "${MAGENTA}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
+echo "Mémoire video	  : "$GPUMEMORY
 echo "Resolution	  : "$RESOLUTION
 echo "================== Partitions ===================" ;
 df -h | grep -E '^/';
@@ -137,3 +140,4 @@ then
         sensors
     fi
 fi
+#Todo : Verifier hddtemp
