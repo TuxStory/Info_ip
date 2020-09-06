@@ -65,6 +65,7 @@ KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
 GPUMEMORY=$(glxinfo | grep "Video memory" | awk '{print $3}')
 RESOLUTION=$(xrandr | grep "*" | awk '{print $1}')
+CAUDIO=$(lspci -v | grep -i audio |  awk -F ": " '{print $2}')
 CHASSIS=$(dmidecode -s chassis-type)
 CHAMAN=$(dmidecode -s chassis-manufacturer)
 SYSMAN=$(dmidecode -s system-manufacturer)
@@ -119,6 +120,7 @@ echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
 echo "Mémoire video	  : "$GPUMEMORY
 echo "Resolution	  : "$RESOLUTION
+echo "Carte audio	  : "$CAUDIO
 echo "================== Partitions ===================" ;
 df -h | grep -E '^/';
 
