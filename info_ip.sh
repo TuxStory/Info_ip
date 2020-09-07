@@ -47,7 +47,7 @@ fi
 
 ############## Variables
 GREEN='\033[0;32m'
-WHITE='\033[1;37m'
+WHITE='\033[1;0m' #real white \033[1;37m
 RED='\033[0;91m'
 BLUE='\033[0;94m'
 MAGENTA='\033[0;95m'
@@ -102,7 +102,7 @@ echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
 echo -e "Version		  : "$VER
-if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
+if [ $ID == "fedora" ]; then #CentOs n'a pas cette option
     echo -e "Variante          : "$VARIANT
 fi
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
