@@ -118,8 +118,11 @@ echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
 echo -e ${WHITE}"Architecture	  : "${MAGENTA}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
 echo "Carte Graphique	  : "$GPU
-echo "Mémoire video	  : "$GPUMEMORY
-echo "Resolution	  : "$RESOLUTION
+if [ $ID != "debian" ]; then
+    echo "Mémoire video	  : "$GPUMEMORY
+    echo "Resolution	  : "$RESOLUTION
+    # Solution via sudo username / car root ne peut pas lancer glxinfo
+fi
 echo "Carte audio	  : "$CAUDIO
 echo "================== Partitions ===================" ;
 df -h | grep -E '^/';
