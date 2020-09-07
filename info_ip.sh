@@ -121,6 +121,7 @@ echo "Carte Graphique	  : "$GPU
 if [ $ID != "debian" ]; then
     echo "Mémoire video	  : "$GPUMEMORY
     echo "Resolution	  : "$RESOLUTION
+    # Solution via sudo username / car root ne peut pas lancer glxinfo
 fi
 echo "Carte audio	  : "$CAUDIO
 echo "================== Partitions ===================" ;
