@@ -16,7 +16,7 @@ if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   exit $EACCES
 fi
 
-if [ ! -x /usr/bin/hddtemp ]; then
+if [ ! -x /usr/sbin/hddtemp ]; then
     echo "Hddtemp n'est pas installé !"
     exit $EACCES
 elif [ ! -x /usr/bin/curl ]; then
