@@ -4,16 +4,24 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 05/09/20	#
-# Version	: 0.1.8		#
+# Revision	: 08/09/20	#
+# Version	: 0.1.9		#
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.1.8
+VERSION=0.1.9
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
   exit $EACCES
+fi
+
+if [ ! -x /usr/bin/hddtemp ]; then
+    echo "Hddtemp n'est pas installé !"
+    exit $EACCES
+elif [ ! -x /usr/bin/curl ]; then
+    echo "Curl n'est pas installé !"
+    exit $EACCES
 fi
 
 ############## Fonctions
@@ -143,6 +151,7 @@ then
     if [[ -x "/usr/bin/sensors" ]]
     then
         sensors
+    else
+        echo "[*] ln-sensors n'est pas installé."
     fi
 fi
-#Todo : Verifier hddtemp
