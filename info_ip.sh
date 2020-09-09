@@ -69,7 +69,7 @@ RED='\033[0;91m'
 BLUE='\033[0;94m'
 MAGENTA='\033[0;95m'
 
-IP=$(hostname -I | awk '{print $1}' 2> /dev/null)
+IP=$(hostname -I 2> /dev/null | awk '{print $1}')
 IP_PUB=$(curl ifconfig.me 2> /dev/null)
 NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
