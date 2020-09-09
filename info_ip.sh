@@ -4,12 +4,12 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 08/09/20	#
-# Version	: 0.1.9		#
+# Revision	: 09/09/20	#
+# Version	: 0.2.0		#
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.1.9
+VERSION=0.2.0
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -53,6 +53,15 @@ then
     version
 fi
 
+############### OS Release
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$NAME
+    VER=$VERSION_ID
+    ID=$ID
+    VARIANT=$VARIANT
+fi
+
 ############## Variables
 GREEN='\033[0;32m'
 WHITE='\033[1;0m' #real white \033[1;37m
@@ -80,13 +89,9 @@ SYSMAN=$(dmidecode -s system-manufacturer)
 FUSEAUH=$(timedatectl show | grep  Timezone | cut -d "=" -f2)
 HEURE=$(date +"%H:%M %d/%m/%Y")
 
-############### OS Release
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    OS=$NAME
-    VER=$VERSION_ID
-    ID=$ID
-    VARIANT=$VARIANT
+############### Manjaro
+if [ $ID == "manjaro" ]; then
+    IP=$(hostname -i )
 fi
 
 ############### Raspberry Pi
@@ -98,7 +103,7 @@ if [ $ID == "raspbian" ]; then
 fi
 
 ############### OpenSuse
-if [ $ID == "opensuse-leap"];then
+if [ $ID == "opensuse-leap" ]; then
     TEMPS=$(uptime | awk '{print $3}')
 fi
 
