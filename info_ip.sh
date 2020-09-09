@@ -114,7 +114,9 @@ echo -e ${WHITE}"IP locale         : "${GREEN}$IP
 echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
-echo -e "Version		  : "$VER
+if [ ! $ID == "manjaro" ]; then
+    echo -e "Version		  : "$VER
+fi
 if [ $ID == "fedora" ]; then #CentOs n'a pas cette option
     echo -e "Variante          : "$VARIANT
 fi
