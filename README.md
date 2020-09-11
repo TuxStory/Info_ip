@@ -17,6 +17,6 @@ En root :
 option du script :  
 -t		: affiche les temperatures.  
 -h		: affiche ce message.  
--v		: affiche la version. 
+-v		: affiche la version.  
 --help		: affiche ce message.  
 --version	: affiche la version.  
