@@ -4,12 +4,12 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 09/09/20	#
-# Version	: 0.2.0		#
+# Revision	: 11/09/20	#
+# Version	: 0.2.1		#
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.2.0
+VERSION=0.2.1
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -88,6 +88,8 @@ CHAMAN=$(dmidecode -s chassis-manufacturer)
 SYSMAN=$(dmidecode -s system-manufacturer)
 FUSEAUH=$(timedatectl show | grep  Timezone | cut -d "=" -f2)
 HEURE=$(date +"%H:%M %d/%m/%Y")
+SHELLO=$(echo $SHELL | awk -F "/" '{print $3}')
+#SHELLO=$(echo $SHELL | cut -d "/" -f3)
 
 ############### Manjaro
 if [ $ID == "manjaro" ]; then
@@ -123,7 +125,7 @@ fi
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
-echo -e ${WHITE}"Shell		  : "$SHELL
+echo -e ${WHITE}"Shell		  : "$SHELLO
 echo -e ${WHITE}"Langue		  : "$LANG
 echo -e "Fuseau Horaire    : "$FUSEAUH
 echo -e "Temps		  : "$HEURE
