@@ -123,6 +123,7 @@ fi
 echo -e "Version du Noyau  : "${BLUE}$KERNEL
 echo -e ${WHITE}"Hostname    	  : "$HOSTNAME
 echo -e "En Fonction 	  : "${RED}$TEMPS
+echo -e ${WHITE}"Shell		  : "$SHELL
 echo -e ${WHITE}"Langue		  : "$LANG
 echo -e "Fuseau Horaire    : "$FUSEAUH
 echo -e "Temps		  : "$HEURE
