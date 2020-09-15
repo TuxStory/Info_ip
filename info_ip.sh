@@ -4,7 +4,7 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 11/09/20	#
+# Revision	: 15/09/20	#
 # Version	: 0.2.1		#
 #################################
 
