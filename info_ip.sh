@@ -111,7 +111,7 @@ fi
 
 ############### Programme
 clear
-echo -e ${WHITE}"==================== IP ===================="
+echo -e ${WHITE}"=================== IP ====================="
 echo -e ${WHITE}"IP locale         : "${GREEN}$IP
 echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
