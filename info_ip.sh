@@ -142,13 +142,13 @@ if [ $ID != "debian" ]; then
     # Solution via sudo username / car root ne peut pas lancer glxinfo
 fi
 echo "Carte audio	  : "$CAUDIO
-echo "================== Partitions ===================" ;
+echo "=================== Partitions ===================" ;
 df -h | grep -E '^/';
 
 ############## Temperature Disque
 if [ "$TEMP" == 1 ]
 then
-    echo "=================== Température =================="
+    echo "================== Température =================="
     if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
         hddtemp
     elif [ $ID == "raspbian" ]; then
