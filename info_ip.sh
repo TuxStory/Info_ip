@@ -148,7 +148,7 @@ df -h | grep -E '^/';
 ############## Temperature Disque
 if [ "$TEMP" == 1 ]
 then
-    echo "================== Température =================="
+    echo "=================== Température =================="
     if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
         hddtemp
     elif [ $ID == "raspbian" ]; then
