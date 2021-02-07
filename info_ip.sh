@@ -9,7 +9,7 @@
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.2.1
+VERSION=0.2.2
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -90,6 +90,11 @@ FUSEAUH=$(timedatectl show | grep  Timezone | cut -d "=" -f2)
 HEURE=$(date +"%H:%M %d/%m/%Y")
 SHELLO=$(echo $SHELL | awk -F "/" '{print $3}')
 #SHELLO=$(echo $SHELL | cut -d "/" -f3)
+
+############### Debian
+if [ $ID == "debian" ]; then
+    VER=$(cat /etc/debian_version )
+fi
 
 ############### Manjaro
 if [ $ID == "manjaro" ]; then
