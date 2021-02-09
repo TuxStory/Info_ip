@@ -4,12 +4,12 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 15/09/20	#
-# Version	: 0.2.1		#
+# Revision	: 09/01/21	#
+# Version	: 0.2.3		#
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.2.2
+VERSION=0.2.3
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -35,7 +35,7 @@ function usage(){
 }
 
 function version(){
-	echo "Info Ip"
+	echo "Info ip (C) 2020-2021 Antoine Even"
 	echo "Version : "$VERSION
 	exit $EACCES
 }
@@ -82,7 +82,7 @@ KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
 GPUMEMORY=$(glxinfo | grep "Video memory" | awk '{print $3}')
 RESOLUTION=$(xrandr | grep "*" | awk '{print $1}')
-CAUDIO=$(lspci -v | grep -i audio |  awk -F ": " '{print $2}')
+CAUDIO=$(lspci | grep -i audio |  awk -F ": " '{print $2}') #Before lspci -v
 CHASSIS=$(dmidecode -s chassis-type)
 CHAMAN=$(dmidecode -s chassis-manufacturer)
 SYSMAN=$(dmidecode -s system-manufacturer)
