@@ -79,6 +79,8 @@ NBCPU=$(nproc)
 FABCPU=$(dmidecode -s processor-manufacturer)
 XBITS=$(uname -m)
 MEM=$(free -h | grep Mem | awk '{print $2}')
+USEDMEM=$(awk '/^Mem/ {print $3}' <(free -h))
+PMEM=$(awk '/^Mem/ {printf("%u%%", 100*$3/$2);}' <(free -m))
 KERNEL=$(uname -a | awk '{print $3}')
 GPU=$(lspci | grep VGA | awk '{for(i=5;i<=NF;++i)print $i}')
 GPUMEMORY=$(glxinfo | grep "Video memory" | awk '{print $3}')
@@ -141,6 +143,7 @@ echo -e "Type de Chassis   : "$CHASSIS
 echo -e "Processeur	  : "$CPU "x "${GREEN}$NBCPU
 echo -e ${WHITE}"Architecture	  : "${MAGENTA}$XBITS
 echo -e ${WHITE}"Mémoire Ram	  : "$MEM
+echo -e "Mémoire used	  : "$USEDMEM " ($PMEM)"
 echo "Carte Graphique	  : "$GPU
 if [ $ID != "debian" ]; then
     echo "Mémoire video	  : "$GPUMEMORY
