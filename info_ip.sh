@@ -4,12 +4,12 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 09/01/21	#
-# Version	: 0.2.3		#
+# Revision	: 03/11/21	#
+# Version	: 0.2.4		#
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.2.3
+VERSION=0.2.4
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -136,7 +136,7 @@ echo -e "En Fonction 	  : "${RED}$TEMPS
 echo -e ${WHITE}"Shell		  : "$SHELLO
 echo -e ${WHITE}"Langue		  : "$LANG
 echo -e "Fuseau Horaire    : "$FUSEAUH
-echo -e "Temps		  : "$HEURE
+echo -e "Heure - Date	  : "$HEURE
 echo "=================== Matériel =================="
 echo -e "Fabricant	  : "$CHAMAN " / " $SYSMAN
 echo -e "Type de Chassis   : "$CHASSIS
