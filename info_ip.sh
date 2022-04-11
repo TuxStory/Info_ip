@@ -4,8 +4,8 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 03/11/21	#
-# Version	: 0.2.4		#
+# Revision	: 11/04/22	#
+# Version	: 0.2.5		#
 #################################
 
 EACCES=13 # Permission denied
@@ -124,7 +124,7 @@ echo -e ${WHITE}"IP locale         : "${GREEN}$IP
 echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
-if [ ! $ID == "manjaro" ]; then
+if [ ! $ID == "manjaro" ] || [ ! $ID == "arch" ]; then
     echo -e "Version		  : "$VER
 fi
 if [ $ID == "fedora" ]; then #CentOs n'a pas cette option
