@@ -127,6 +127,7 @@ echo -e ${WHITE}"Distribution 	  : "$OS
 if [ ! $ID == "manjaro" ] || [ ! $ID == "arch" ]; then
     echo -e "Version		  : "$VER
 fi
+
 if [ $ID == "fedora" ]; then #CentOs n'a pas cette option
     echo -e "Variante          : "$VARIANT
 fi
