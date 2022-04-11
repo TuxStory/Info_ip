@@ -125,7 +125,7 @@ echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
 if [ $ID == "manjaro" ] || [ $ID == "arch" ] ; then
-    ": ": do nothing"
+    : # : do nothing
 else
     echo -e "Version		  : "$VER
 fi
