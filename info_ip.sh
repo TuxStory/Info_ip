@@ -61,6 +61,7 @@ if [ -f /etc/os-release ]; then
     VER=$VERSION_ID
     ID=$ID
     VARIANT=$VARIANT
+    BUILD_ID=$BUILDID
 fi
 
 ############## Variables
@@ -125,7 +126,8 @@ echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
 if [ $ID == "manjaro" ] || [ $ID == "arch" ] ; then
-    : ": do nothing"
+    echo -e "Version		 : "$BUILDID
+    #": ": do nothing"
 else
     echo -e "Version		  : "$VER
 fi
