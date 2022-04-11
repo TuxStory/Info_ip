@@ -9,7 +9,7 @@
 #################################
 
 EACCES=13 # Permission denied
-VERSION=0.2.4
+VERSION=0.2.5
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
@@ -99,8 +99,8 @@ if [ $ID == "debian" ]; then
     VER=$(cat /etc/debian_version )
 fi
 
-############### Manjaro
-if [ $ID == "manjaro" ]; then
+############### Manjaro & Arch Linux
+if [ $ID == "manjaro" ] || [ $ID == "arch" ]; then
     IP=$(hostname -i )
 fi
 
