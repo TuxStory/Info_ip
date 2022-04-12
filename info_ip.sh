@@ -4,12 +4,11 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 11/04/22	#
-# Version	: 0.2.5		#
+# Revision	: 12/04/22	#
 #################################
 
+VERSION=0.2.6
 EACCES=13 # Permission denied
-VERSION=0.2.5
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   echo "Permission denied : you must be root."
