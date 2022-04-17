@@ -4,10 +4,10 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 12/04/22	#
+# Revision	: 17/04/22	#
 #################################
 
-VERSION=0.2.6
+VERSION=0.2.7
 EACCES=13 # Permission denied
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
@@ -20,6 +20,10 @@ if [ ! -x /usr/sbin/hddtemp ]; then
     exit $EACCES
 elif [ ! -x /usr/bin/curl ]; then
     echo "Curl n'est pas installé !"
+    exit $EACCES
+elif [ ! -x /usr/bin/geoiplookup ]; then
+    echo "Geoip n'est pas installé !"
+    echo "sudo apt-get install geoip-bin"
     exit $EACCES
 fi
 
@@ -71,6 +75,7 @@ MAGENTA='\033[0;95m'
 
 IP=$(hostname -I 2> /dev/null | awk '{print $1}')
 IP_PUB=$(curl ifconfig.me 2> /dev/null)
+IP_COUNTRY=$(geoiplookup $IP_PUB | awk -F ": " '{print $2}')
 NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
 CPU=$(cat /proc/cpuinfo | grep -i "^model name" | awk -F ": " '{print $2}' | head -1 | sed 's/ \+/ /g')
@@ -121,6 +126,7 @@ clear
 echo -e ${WHITE}"=================== IP ====================="
 echo -e ${WHITE}"IP locale         : "${GREEN}$IP
 echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
+echo -e ${WHITE}"IP Localisation   : "${GREEN}$IP_COUNTRY
 echo -e ${WHITE}"=================== Infos =================="
 echo -e ${WHITE}"Distribution 	  : "$OS
 if [ $ID == "manjaro" ] || [ $ID == "arch" ] ; then
@@ -176,3 +182,4 @@ then
         echo "[*] ln-sensors n'est pas installé."
     fi
 fi
+
