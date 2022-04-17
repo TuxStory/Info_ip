@@ -38,7 +38,7 @@ function usage(){
 }
 
 function version(){
-	echo "Info ip (C) 2020-2021 Antoine Even"
+	echo "Info ip (C) 2020-2022 Antoine Even"
 	echo "Version : "$VERSION
 	echo "Licence : MIT License"
 	exit $EACCES
