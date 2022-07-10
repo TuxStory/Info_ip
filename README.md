@@ -2,14 +2,14 @@
 
 Auteur : Antoine Even  
 Nom : Info_ip
-Version : 0.2.1
+Version : 0.2.8
 
 Il s'agit d'un script Bash qui permet d'avoir plusieurs types d'informations sur le système
 dont l'ip publique et l'ip locale.  
 Requiert les droits d'administrations.  
 Les commandes ln-sensors & curl doivent être installés.  
 
-## Utilisation :
+### Utilisation :
 Utilisateur :
 `sudo ./info_ip.sh`  
 En root : 
