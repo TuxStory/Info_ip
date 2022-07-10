@@ -20,8 +20,9 @@ Fedora :
 `dnf install ln-sensors curl hddterm geoip-bin`
 
 ### Utilisation :
-Utilisateur :  
-`sudo ./info_ip.sh    
+Utilisateur :
+`sudo ./info_ip.sh`  
+
 En root : 
 `./info_ip.sh`
 
