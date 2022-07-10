@@ -7,7 +7,7 @@
 # Revision	: 10/07/22	#
 #################################
 
-VERSION=0.2.8
+VERSION=0.2.9
 EACCES=13 # Permission denied
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
@@ -17,15 +17,15 @@ fi
 
 if [ ! -x /usr/sbin/hddtemp ]; then
     echo "[*] Hddtemp n'est pas installé !"
-    echo "sudo apt install hddtemp"
+    echo ">>> sudo apt install hddtemp"
     exit $EACCES
 elif [ ! -x /usr/bin/curl ]; then
     echo "[*] Curl n'est pas installé !"
-    echo "sudo apt install curl"
+    echo ">>> sudo apt install curl"
     exit $EACCES
 elif [ ! -x /usr/bin/geoiplookup ]; then
     echo "[*] Geoip n'est pas installé !"
-    echo "sudo apt install geoip-bin"
+    echo ">>> sudo apt install geoip-bin"
     exit $EACCES
 fi
 

@@ -1,7 +1,7 @@
 ## Info_ip
  
 Nom : Info_ip  
-Version : 0.2.8  
+Version : 0.2.9  
 Auteur : Antoine Even 
 
 Il s'agit d'un script Bash qui permet d'avoir plusieurs types d'informations sur le système
