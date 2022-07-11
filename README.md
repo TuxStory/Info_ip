@@ -17,7 +17,7 @@ Debian :
 `sudo apt install ln-sensors curl hddterm geoip-bin`
 
 Fedora :  
-`dnf install ln_sensors curl hddterm GeoIp`
+`sudo dnf install ln_sensors curl hddterm GeoIp`
 
 ### Utilisation :
 Utilisateur :
