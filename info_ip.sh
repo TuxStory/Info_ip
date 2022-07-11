@@ -7,7 +7,7 @@
 # Revision	: 11/07/22	#
 #################################
 
-VERSION=0.3.0
+VERSION=0.3.1
 EACCES=13 # Permission denied
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
@@ -24,7 +24,7 @@ function depend(){
 	do
   	[[ $(which $name 2>/dev/null) ]] || { echo -en "\n >>> $name doit être installé.";deps=1; }
 	done
-	[[ $deps -ne 1 ]] && echo "OK" || { echo -en "\n\nInstallez les dépendances et relancez le script\n";exit 1; }
+	[[ $deps -ne 1 ]] && echo "OK" || { echo -en "\n\nInstallez les dépendances et relancez le script.\nPour plus de détails, lisez le fichier README.md.\n";exit 1; }
 	}
 
 function usage(){
