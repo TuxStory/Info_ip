@@ -4,10 +4,10 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 10/07/22	#
+# Revision	: 11/07/22	#
 #################################
 
-VERSION=0.2.9
+VERSION=0.3.0
 EACCES=13 # Permission denied
 
 if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
@@ -15,21 +15,18 @@ if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
   exit $EACCES
 fi
 
-if [ ! -x /usr/sbin/hddtemp ]; then
-    echo "[*] Hddtemp n'est pas installé !"
-    echo ">>> sudo apt install hddtemp"
-    exit $EACCES
-elif [ ! -x /usr/bin/curl ]; then
-    echo "[*] Curl n'est pas installé !"
-    echo ">>> sudo apt install curl"
-    exit $EACCES
-elif [ ! -x /usr/bin/geoiplookup ]; then
-    echo "[*] Geoip n'est pas installé !"
-    echo ">>> sudo apt install geoip-bin"
-    exit $EACCES
-fi
 
 ############## Fonctions
+
+function depend(){
+	echo -ne "[*] Vérification des dépendances... \n"
+	for name in hddtemp curl sensors geoiplookup
+	do
+  	[[ $(which $name 2>/dev/null) ]] || { echo -en "\n >>> $name doit être installé.";deps=1; }
+	done
+	[[ $deps -ne 1 ]] && echo "OK" || { echo -en "\n\nInstallez les dépendances et relancez le script\n";exit 1; }
+	}
+
 function usage(){
 	echo "Utilisation du script :"
 	echo "-t		: affiche les temperatures."
@@ -45,6 +42,9 @@ function version(){
 	echo "Licence : MIT License"
 	exit $EACCES
 }
+
+############## Dependances
+depend
 
 ############## Arguments
 if [ $# -eq 1 ] && [ "$1" == "-h" ] || [ "$1" == "--help" ]
@@ -182,7 +182,7 @@ then
         sensors
     else
         echo "[*] ln-sensors n'est pas installé."
-        echo "sudo apt install ln-sensors"
+        echo "sudo apt install ln-sensors - sudo dnf install ln_sensors"
     fi
 fi
 
