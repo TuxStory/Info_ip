@@ -4,28 +4,35 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 11/07/22	#
+# Revision	: 09/09/22	#
 #################################
 
-VERSION=0.3.1
+VERSION=0.3.2
 EACCES=13 # Permission denied
 
-if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
-  echo "Permission denied : you must be root."
-  exit $EACCES
-fi
-
+############### Couleurs
+GREEN='\033[1;32m'
+WHITE='\033[1;0m' #real white \033[1;37m
+RED='\033[0;91m'
+BLUE='\033[0;94m'
+MAGENTA='\033[0;95m'
 
 ############## Fonctions
+function root(){
+	if [ "$UID" -ne 0 ]; then # Vous êtes ROOT
+	echo -ne "Permission denied : you must be ${RED}root${WHITE}.\n"
+  	exit $EACCES
+	fi
+}
 
 function depend(){
-	echo -ne "[*] Vérification des dépendances... \n"
+	echo -ne "[${GREEN}*${WHITE}] Vérification des dépendances... \n"
 	for name in hddtemp curl sensors geoiplookup
 	do
   	[[ $(which $name 2>/dev/null) ]] || { echo -en "\n >>> $name doit être installé.";deps=1; }
 	done
 	[[ $deps -ne 1 ]] && echo "OK" || { echo -en "\n\nInstallez les dépendances et relancez le script.\nPour plus de détails, lisez le fichier README.md.\n";exit 1; }
-	}
+}
 
 function usage(){
 	echo "Utilisation du script :"
@@ -43,9 +50,12 @@ function version(){
 	exit $EACCES
 }
 
+############## Verif Root
+root
+
 ############## Dependances
 depend
-
+clear
 ############## Arguments
 if [ $# -eq 1 ] && [ "$1" == "-h" ] || [ "$1" == "--help" ]
 then
@@ -69,12 +79,6 @@ if [ -f /etc/os-release ]; then
 fi
 
 ############## Variables
-GREEN='\033[0;32m'
-WHITE='\033[1;0m' #real white \033[1;37m
-RED='\033[0;91m'
-BLUE='\033[0;94m'
-MAGENTA='\033[0;95m'
-
 IP=$(hostname -I 2> /dev/null | awk '{print $1}')
 IP_PUB=$(curl ifconfig.me 2> /dev/null)
 IP_COUNTRY=$(geoiplookup $IP_PUB | awk -F ": " '{print $2}')
@@ -124,7 +128,7 @@ if [ $ID == "opensuse-leap" ]; then
 fi
 
 ############### Programme
-clear
+
 echo -e ${WHITE}"=================== IP ====================="
 echo -e ${WHITE}"IP locale         : "${GREEN}$IP
 echo -e ${WHITE}"IP Publique       : "${GREEN}$IP_PUB
