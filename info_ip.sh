@@ -4,10 +4,10 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 09/09/22	#
+# Revision	: 27/10/22	#
 #################################
 
-VERSION=0.3.2
+VERSION=0.3.3
 EACCES=13 # Permission denied
 
 ############### Couleurs
@@ -80,7 +80,7 @@ fi
 
 ############## Variables
 IP=$(hostname -I 2> /dev/null | awk '{print $1}')
-IP_PUB=$(curl ifconfig.me 2> /dev/null)
+IP_PUB=$(curl https://ifconfig.me 2> /dev/null)
 IP_COUNTRY=$(geoiplookup $IP_PUB | awk -F ": " '{print $2}')
 NAME=$(hostname)
 TEMPS=$(uptime -p | awk '{for(i=2;i<=NF;++i)print $i}')
