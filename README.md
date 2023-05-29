@@ -1,7 +1,7 @@
 ## Info_ip
  
 Nom : Info_ip  
-Version : 0.3.3   
+Version : 0.3.4   
 Auteur : Antoine Even 
 
 Il s'agit d'un script Bash qui permet d'avoir plusieurs types d'informations sur le système
@@ -14,10 +14,10 @@ Les dépendances suivantes doivent être installés :
 - geoip-bin  
 
 Debian :  
-`sudo apt install ln-sensors curl hddterm geoip-bin`
+`sudo apt install lm-sensors curl hddtemp geoip-bin`
 
 Fedora :  
-`sudo dnf install ln_sensors curl hddterm GeoIp`
+`sudo dnf install lm_sensors curl hddtemp GeoIp`
 
 ### Utilisation :
 Utilisateur :

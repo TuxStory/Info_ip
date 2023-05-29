@@ -7,7 +7,7 @@
 # Revision	: 27/10/22	#
 #################################
 
-VERSION=0.3.3
+VERSION=0.3.4
 EACCES=13 # Permission denied
 
 ############### Couleurs
@@ -185,8 +185,8 @@ then
     then
         sensors
     else
-        echo "[*] ln-sensors n'est pas installé."
-        echo "sudo apt install ln-sensors - sudo dnf install ln_sensors"
+        echo "[*] lm-sensors n'est pas installé."
+        echo "sudo apt install lm-sensors - sudo dnf install lm_sensors"
     fi
 fi
 
