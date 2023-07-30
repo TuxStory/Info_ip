@@ -4,10 +4,10 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 27/10/22	#
+# Revision	: 30/07/23	#
 #################################
 
-VERSION=0.3.4
+VERSION=0.3.5
 EACCES=13 # Permission denied
 
 ############### Couleurs
@@ -27,7 +27,7 @@ function root(){
 
 function depend(){
 	echo -ne "[${GREEN}*${WHITE}] Vérification des dépendances... \n"
-	for name in hddtemp curl sensors geoiplookup
+	for name in curl sensors geoiplookup smartctl
 	do
   	[[ $(which $name 2>/dev/null) ]] || { echo -en "\n >>> $name doit être installé.";deps=1; }
 	done
@@ -169,15 +169,17 @@ echo "=================== Partitions ===================" ;
 df -h | grep -E '^/';
 
 ############## Temperature Disque
+############# NEED TO BE CORRECTED SINCE HDDTEMP IS OUT
+
 if [ "$TEMP" == 1 ]
 then
     echo "================== Température =================="
     if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
-        hddtemp
+        echo #hddtemp A CORRIGER
     elif [ $ID == "raspbian" ]; then
         echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
     else
-        hddtemp /dev/sd*
+        echo #hddtemp /dev/sd* A CORRIGER
     fi
     echo
     ############### Temperature Sensors
