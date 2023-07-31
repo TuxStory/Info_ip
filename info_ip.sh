@@ -7,7 +7,7 @@
 # Revision	: 30/07/23	#
 #################################
 
-VERSION=0.3.5
+VERSION=0.3.6
 EACCES=13 # Permission denied
 
 ############### Couleurs
@@ -27,7 +27,7 @@ function root(){
 
 function depend(){
 	echo -ne "[${GREEN}*${WHITE}] Vérification des dépendances... \n"
-	for name in curl sensors geoiplookup smartctl
+	for name in curl sensors geoiplookup smartctl #Need to find a solution for all distro
 	do
   	[[ $(which $name 2>/dev/null) ]] || { echo -en "\n >>> $name doit être installé.";deps=1; }
 	done
@@ -175,7 +175,7 @@ if [ "$TEMP" == 1 ]
 then
     echo "================== Température =================="
     if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
-        echo #hddtemp A CORRIGER
+        hddtemp #hddtemp still present in Fedora
     elif [ $ID == "raspbian" ]; then
         echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
     else
