@@ -4,10 +4,10 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 30/07/23	#
+# Revision	: 31/07/23	#
 #################################
 
-VERSION=0.3.6
+VERSION=0.3.8
 EACCES=13 # Permission denied
 
 ############### Couleurs
@@ -27,7 +27,7 @@ function root(){
 
 function depend(){
 	echo -ne "[${GREEN}*${WHITE}] Vérification des dépendances... \n"
-	for name in curl sensors geoiplookup smartctl #Need to find a solution for all distro
+	for name in curl sensors geoiplookup #drivetemp to replace hddtemp
 	do
   	[[ $(which $name 2>/dev/null) ]] || { echo -en "\n >>> $name doit être installé.";deps=1; }
 	done
@@ -169,23 +169,15 @@ echo "=================== Partitions ===================" ;
 df -h | grep -E '^/';
 
 ############## Temperature Disque
-############# NEED TO BE CORRECTED SINCE HDDTEMP IS OUT
+############## I choose drivetemp to replace hddtemp
 
 if [ "$TEMP" == 1 ]
 then
     echo "================== Température =================="
-    if [ $ID == "fedora" ] || [ $ÎD == "centos" ]; then
-        hddtemp #hddtemp still present in Fedora
-    elif [ $ID == "raspbian" ]; then
-        echo "Raspberry Pi, décomentez si vous avez des disques externes" #; hddtemp /dev/sd*
-    else
-        echo #hddtemp /dev/sd* A CORRIGER
-    fi
-    echo
-    ############### Temperature Sensors
     if [[ -x "/usr/bin/sensors" ]]
     then
         sensors
+        echo ">>> for HDD temp, please verify that module drivetemp is loaded"
     else
         echo "[*] lm-sensors n'est pas installé."
         echo "sudo apt install lm-sensors - sudo dnf install lm_sensors"
