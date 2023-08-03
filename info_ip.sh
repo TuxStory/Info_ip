@@ -4,10 +4,10 @@
 # Nom		: info_ip.sh	#
 # Auteur 	: Antoine Even	#
 # Date 		: 07/06/20	#
-# Revision	: 31/07/23	#
+# Revision	: 03/08/23	#
 #################################
 
-VERSION=0.3.8
+VERSION=0.3.9
 EACCES=13 # Permission denied
 
 ############### Couleurs
@@ -44,7 +44,7 @@ function usage(){
 }
 
 function version(){
-	echo "Info ip (C) 2020-2022 Antoine Even"
+	echo "Info ip (C) 2020-2023 Antoine Even"
 	echo "Version : "$VERSION
 	echo "Licence : MIT License"
 	exit $EACCES
@@ -183,4 +183,3 @@ then
         echo "sudo apt install lm-sensors - sudo dnf install lm_sensors"
     fi
 fi
-
